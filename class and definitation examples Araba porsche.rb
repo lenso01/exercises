@@ -14,7 +14,8 @@ end
 
 @cars = TheCar.new
 
-print "What is the brand? : "
+loop do
+print "\n What is the brand? : "
 @cars.brand = gets.chomp
 print "What is the model? : "
 @cars.model = gets.chomp.to_s
@@ -30,8 +31,15 @@ print "Who is the current owner? : "
 puts  "Would you like to see the information about the car"
 puts "Use 'Y' for YES"
 
-if gets.chomp == 'Y'
+if gets.chomp.downcase == 'y'
   car_screen
 else
+  puts
   puts "Thank you for your entry"
+  puts
 end
+
+
+end
+
+
