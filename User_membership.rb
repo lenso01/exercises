@@ -1,3 +1,11 @@
+# this code uses attr_accessory commands and def and classes . it is pretty clean .
+# however it has so many missing features. such as we can't save it database yet.
+# or we can't give restriction for user entries such as don't use numeric or symbol etc.
+# we can make it looking more good looking if we use screen area adjustments.
+
+
+
+
 class CustomersClass                                                  #This Class to write and read information to memory
   attr_accessor :userID ,:user_name, :user_location, :user_job
 end
