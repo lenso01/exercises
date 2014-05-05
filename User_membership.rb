@@ -3,6 +3,7 @@
 # or we can't give restriction for user entries such as don't use numeric or symbol etc.
 # we can make it looking more good looking if we use screen area adjustments.
 
+require_relative 'customerclass'
 
 
 
@@ -57,5 +58,8 @@ while try_again_on
 
 end
 
+puts `clear`
 puts "Thanks for joining our program"                                 #end of the program.
-
+puts
+puts
+puts
