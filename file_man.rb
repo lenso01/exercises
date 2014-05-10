@@ -1,6 +1,56 @@
+def verify_if_exist_function
+  loop do
+
+   verify = File.exist?(@filename)
+
+    if verify == true
+      break
+
+    elsif verify == false
+      puts "There is no such a file . Make sure you don't add '.txt' "
+      file_name_entry
+    end
+
+  end
+end
+
+
+def verify_if_not_exist_function
+  loop do
+
+    verify = File.exist?(@filename)
+
+    if verify == true
+      puts "The file name you entered is already exist!!"
+      puts "Press Any Key to enter new file name "
+      gets
+      file_name_entry
+    elsif verify == false
+      break
+    end
+
+  end
+end
+
+
+
+def file_list_function
+  puts "Would you like to see all file with ending '.txt'. 'Y' or 'N' ? "
+  see_files_verify = gets.chomp.downcase
+  if see_files_verify == 'y'
+    @file_list= Dir.glob("*.txt")
+    puts  @file_list
+  else
+
+
+  end
+end
+
+
+
 def write_on_file_function
   open_file_for_data = File.open(@filename,'w+')
-  print "enter your input : "
+  print "Please enter your input in file : "
   input_data = STDIN.gets.chomp
   open_file_for_data.write(input_data)
   open_file_for_data.close
@@ -8,7 +58,7 @@ def write_on_file_function
 end
 
 def  file_name_entry
-print "print enter file name : "
+print "Enter the file name : "
 
 @filename = gets.chomp.to_s + '.txt'
 end
@@ -22,12 +72,14 @@ end
 
 def multi_question_answering
 
-  puts "*********** FILE MANAGER ************"
+  puts "*********** FILE MANAGER V1.2 ************"
+  puts
   puts "What would you like to do ? "
-  puts "To Create New File Enter '1' "
-  puts "To Open a Existing File '2'"
-  puts "To Delete a Existing File '3'"
-  puts "*************************************"
+  puts "1. Create New File Enter "
+  puts "2. Open a Existing File "
+  puts "3. Delete a Existing File "
+  puts
+  puts "*******************************************"
   print "> "
 end
 
@@ -35,8 +87,8 @@ def return_back_or_read_answering
 
   puts "What would you like to do now ? "
   puts "To Read the file you entered  1 "
-  puts "To Return to previous menu 2 "
-  puts "Go to Main Menu 3"
+  puts "Go to Main Menu 2"
+  puts "Return to previous menu 3"
   print "> "
 end
 
@@ -94,6 +146,7 @@ while menu_repeater
     if @answer == '1'
 
       file_name_entry
+      verify_if_not_exist_function
       file_create
       write_on_file_function
       puts "The date entered into file"
@@ -109,10 +162,10 @@ while menu_repeater
 
         end
 
-
-
     elsif @answer == '2'
+      file_list_function
       file_name_entry
+      verify_if_exist_function
       open_a_file_function
       return_back_or_read_answering
       question_answering
@@ -128,12 +181,16 @@ while menu_repeater
 
 
     elsif @answer == '3'
+      file_list_function
       file_name_entry
+      verify_if_exist_function
       delete_a_file_with_function
       return_back_or_delete_answering
       question_answering
       if @answer == '1'
+        file_list_function
         file_name_entry
+        verify_if_exist_function
         delete_a_file_with_function
         puts "Return to main menu press any key"
         gets
@@ -145,91 +202,4 @@ while menu_repeater
 
     end
   end
-
 end
-
-
-
-# =begin
-#
-# menu_repeater = true
-#
-# while menu_repeater
-#   #puts `clear`
-#   multi_question_answering
-#   question_answering
-#
-#     if @answer == '1'
-#
-#       file_name_entry
-#       file_create
-#       write_on_file_function
-#       puts "The date entered into file"
-#       return_back_or_read_answering
-#       question_answering
-#
-#       repeat_open_file = true
-#       while repeat_open_file
-#
-#         if @answer == '1'
-#           open_a_file_function
-#           puts
-#           return_back_or_read_answering
-#           question_answering
-#                 if @answer = '1'
-#
-#                 end
-#
-# end
-#
-#
-#         elsif @answer == '2'
-#       end
-#     end
-#
-#
-#
-#
-#     elsif @answer == '2'
-#       file_name_entry
-#       open_a_file_function
-#       return_back_or_read_answering
-#       question_answering
-#         if @answer == '1'
-#           open_a_file_function
-#           return_back_or_read_answering
-#           question_answering
-#               if @answer == '1'
-#               # open the file again
-#               open_a_file_function
-#
-#               elsif @answer == '2'
-#               puts
-#
-#               elsif @answer == '3'
-#
-#               puts
-#
-#               end
-#
-#
-#         elsif @answer == '2'
-#           puts
-#
-#         end
-#
-#     elsif @answer == '3'
-#
-#       file_name_entry
-#       delete_a_file_with_function
-#       return_back_or_delete_answering
-#       question_answering
-#
-#         if @answer == '1'
-#
-#
-#         elsif
-#          puts
-#
-#         end
-#=end
