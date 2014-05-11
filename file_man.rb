@@ -72,7 +72,7 @@ end
 
 def multi_question_answering
 
-  puts "*********** FILE MANAGER V1.2 ************"
+  puts "*********** FILE MANAGER V1.3 ************"
   puts
   puts "What would you like to do ? "
   puts "1. Create New File Enter "
@@ -80,7 +80,6 @@ def multi_question_answering
   puts "3. Delete a Existing File "
   puts
   puts "*******************************************"
-  print "> "
 end
 
 def return_back_or_read_answering
@@ -89,7 +88,6 @@ def return_back_or_read_answering
   puts "To Read the file you entered  1 "
   puts "Go to Main Menu 2"
   puts "Return to previous menu 3"
-  print "> "
 end
 
 def return_back_or_delete_answering
@@ -97,12 +95,31 @@ def return_back_or_delete_answering
   puts "What would you like to do now ? "
   puts "To Delete another file  '1' "
   puts "Go to Main Menu '2'"
-  print "> "
 end
 
 
 def question_answering
-  @answer = gets.chomp.downcase()
+  loop do
+    print "Enter the number in options> "
+    @answer = gets.chomp
+    if @answer == '1'
+      break
+    elsif @answer == '2'
+      break
+    elsif @answer == '3'
+      break
+    elsif @answer == 'y'
+      break
+    elsif @answer == 'n'
+      break
+
+    else
+      puts "This not a numberic entry!. Try again"
+
+    end
+
+  end
+
 end
 
 def file_name_entry_function
@@ -149,7 +166,7 @@ while menu_repeater
       verify_if_not_exist_function
       file_create
       write_on_file_function
-      puts "The date entered into file"
+      puts "Your input entered & saved to #{@filename}"
       return_back_or_read_answering
       question_answering
         if @answer == '1'
